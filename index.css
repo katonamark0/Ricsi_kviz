@@ -1,10 +1,15 @@
 body {
-    background: radial-gradient(circle at top, #0f0f0f, #000);
+    background-image: url(hatter.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
     color: #fff;
     text-align: center;
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 10px;
+
+    -webkit-tap-highlight-color: transparent;
 }
 
 h1 {
@@ -20,18 +25,35 @@ body > * {
     margin-right: auto;
 }
 
+.bal-alul{
+    position: fixed;
+    bottom: 8px;
+    left: 8px;
+    color: #00f7ff;
+    text-shadow: 0 0 8px #00f7ff;
+    font-size: 11px;
+    opacity: 0.8;
+}
+
+
 button {
-    margin: 6px 0;
-    font-size: 15px;
-    padding: 14px;
-    border-radius: 14px;
+    margin: 8px 0;
+    font-size: 16px;
+    padding: 16px;
+    border-radius: 16px;
     border: none;
     background: #111;
     color: #00f7ff;
     cursor: pointer;
     width: 100%;
-    box-shadow: 0 0 8px #00f7ff44;
+    box-shadow: 0 0 10px #00f7ff44;
     transition: 0.2s;
+    touch-action: manipulation;
+}
+
+button:active {
+    transform: scale(0.97);
+    box-shadow: 0 0 5px #00f7ff;
 }
 
 button:hover {
@@ -40,14 +62,15 @@ button:hover {
 }
 
 input {
-    padding: 12px;
-    border-radius: 12px;
+    padding: 14px;
+    border-radius: 14px;
     border: none;
     width: 100%;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
+    font-size: 16px;
     background: #111;
     color: white;
-    box-shadow: 0 0 8px #ff00aa44;
+    box-shadow: 0 0 10px #ff00aa44;
 }
 
 #players {
@@ -63,7 +86,7 @@ input {
 
 .card {
     width: 100%;
-    height: 180px;
+    height: 170px;
     margin: 20px auto;
     perspective: 1000px;
 }
@@ -118,7 +141,7 @@ canvas {
 .wheel-container {
     position: relative;
     width: 100%;
-    max-width: 350px;
+    max-width: 260px;
     margin: 20px auto;
 }
 
@@ -143,17 +166,18 @@ button:last-of-type {
 }
 
 @media (max-width: 600px) {
+
     h1 {
         font-size: 18px;
     }
 
     button {
-        font-size: 13px;
-        padding: 10px;
+        font-size: 14px;
+        padding: 12px;
     }
 
     input {
-        font-size: 14px;
+        font-size: 15px;
     }
 
     .card {
@@ -161,21 +185,6 @@ button:last-of-type {
     }
 
     .wheel-container {
-        max-width: 280px;
+        max-width: 240px;
     }
 }
-
-    .card {
-        height: 160px;
-    }
-
-
-    button {
-        font-size: 14px;
-        padding: 10px;
-    }
-
-    .card {
-        height: 160px;
-    }
-
