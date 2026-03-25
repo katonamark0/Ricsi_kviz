@@ -324,7 +324,16 @@ let gameStarted = false;
 
 let canvas, ctx;
 
+
+let hasznalt = [];
+let korSzamlalo = 0;
+
 function addPlayer() {
+    // 🔥 BIZTOSÍTÁS: ha valami felülírta
+    if (!Array.isArray(players)) {
+        players = [];
+    }
+
     const input = document.getElementById("playerName");
     const name = input.value.trim();
     if (!name) return;
@@ -332,14 +341,17 @@ function addPlayer() {
     players.push(name);
     input.value = "";
     renderPlayers();
-    drawWheel();
+
+    if (canvas && ctx) {
+        drawWheel();
+    }
 }
 
 function renderPlayers() {
     let text = "Játékosok: ";
     players.forEach((p, i) => {
         text += i === currentPlayer
-            ? ` <span class="active-player">${p}</span> `
+            ? `👉 <span class="active-player">${p}</span> `
             : p + " ";
     });
     document.getElementById("players").innerHTML = text;
@@ -360,8 +372,19 @@ function startGame() {
 function ujKor() {
     if (!gameStarted) return;
 
-    // kartyaforditas
     document.getElementById("card").classList.remove("flip");
+
+    korSzamlalo++;
+
+    // 🔥 RANDOM EVENT 5 körönként
+    if (korSzamlalo % 5 === 0) {
+        const events = [
+            "🍻 Mindenki iszik!",
+            "🔄 Csere ital a bal oldali játékossal!",
+            "🎯 Valaki más válaszol helyetted!"
+        ];
+        alert(events[Math.floor(Math.random()*events.length)]);
+    }
 
     if (hasznalt.length === parok.length) {
         hasznalt = [];
@@ -374,15 +397,23 @@ function ujKor() {
 
     hasznalt.push(index);
 
-    const player = players[currentPlayer];
+    let player = players[currentPlayer];
+
+    // 🔥 20% eséllyel dupla kör
+    if (Math.random() < 0.2) {
+        alert("🔥 DUPLA KÖR!");
+    } else {
+        currentPlayer = (currentPlayer + 1) % players.length;
+    }
+
     const adat = parok[index];
 
     document.getElementById("kerdesText").innerText = player + ": " + adat.kerdes;
     document.getElementById("buntetesText").innerText = adat.buntetes;
 
-    currentPlayer = (currentPlayer + 1) % players.length;
     renderPlayers();
 }
+
 
 function flipKartya() {
     document.getElementById("card").classList.toggle("flip");
@@ -401,6 +432,7 @@ function randomPlayer() {
     const rand = Math.floor(Math.random() * players.length);
     alert("🎯 " + players[rand]);
 }
+
 
 //  animalt kerek
 let spinAngle = 0;

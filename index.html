@@ -11,7 +11,7 @@
 
 <div>
     <input type="text" id="playerName" placeholder="Játékos neve">
-    <button onclick="addPlayer()">➕ Hozzáadás</button>
+    <button type="button" onclick="addPlayer()">➕ Hozzáadás</button>
 </div>
 
 <div id="players"></div>
@@ -21,7 +21,7 @@
 <button onclick="ujKor()">❓ Kérdés</button>
 <button onclick="flipKartya()">💀 Büntetés</button>
 <button onclick="keveres()">🔀 Keverés</button>
-<audio id="flipSound" src="Flip Card SOUND Effect.mp3"></audio>
+<button onclick="randomPlayer()">🎰 Random játékos</button>
 
 <div id="output"></div>
 
@@ -32,14 +32,13 @@
     </div>
 </div>
 
+<audio id="flipSound" src="Flip Card SOUND Effect.mp3"></audio>
 
-
-<canvas id="wheel" width="400" height="400"></canvas>
-<button onclick="spinWheel()">🎯 Pörgesd a kereket</button>
-
-<div style="display: flex; align-items: flex-end; height: 200px;">
-<p style="position: absolute; bottom: 0;">© 2026 Katona Márk</p>
+<div class="wheel-container">
+    <div class="wheel-pointer"></div>
+    <canvas id="wheel" width="400" height="400"></canvas>
 </div>
+<button onclick="spinWheel()">🎯 Pörgesd a kereket</button>
 
 <script src="kviz.js"></script>
 </body>
