@@ -339,7 +339,7 @@ function renderPlayers() {
     let text = "Játékosok: ";
     players.forEach((p, i) => {
         text += i === currentPlayer
-            ? `👉 <span class="active-player">${p}</span> `
+            ? ` <span class="active-player">${p}</span> `
             : p + " ";
     });
     document.getElementById("players").innerHTML = text;
