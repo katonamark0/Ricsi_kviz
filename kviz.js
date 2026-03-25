@@ -357,8 +357,6 @@ function startGame() {
 }
 
 
-
-
 function ujKor() {
     if (!gameStarted) return;
 
