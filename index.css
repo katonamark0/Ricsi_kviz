@@ -1,6 +1,8 @@
 body {
+    image-resolution: 1920 1080;
     background-image: url(hatter.jpg);
-    
+    background-repeat: no-repeat;
+    background-size: cover;
     color: white;
     text-align: center;
     font-family: Arial;
